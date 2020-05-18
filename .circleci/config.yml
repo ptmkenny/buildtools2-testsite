@@ -79,7 +79,7 @@ jobs:
 
       - run:
           name: run static tests
-          command: ./.ci/test/static/run
+          command: bash ./.ci/test/static/run
 
       - save_cache:
           key: composer-cache-{{ checksum "composer.lock" }}
@@ -106,7 +106,7 @@ jobs:
 
       - run:
           name: run PHP build step
-          command: ./.ci/build/php
+          command: bash ./.ci/build/php
 
       - save_cache:
           key: vendor-{{ checksum "composer.lock" }}
@@ -143,7 +143,7 @@ jobs:
       # Deploy to Pantheon
       - run:
           name: deploy to Pantheon
-          command: ./.ci/deploy/pantheon/dev-multidev
+          command: bash ./.ci/deploy/pantheon/dev-multidev
 
   behat_test:
     <<: *defaults
@@ -166,18 +166,18 @@ jobs:
           # prior to running Behat tests. This is useful to reset the multidev
           # environment to the previous state after Behat tests have run.
           name: prepare for Behat testing
-          command: ./.ci/test/behat/initialize
+          command: bash ./.ci/test/behat/initialize
 
       - run:
           name: run acceptance tests with Behat
-          command: ./.ci/test/behat/run
+          command: bash ./.ci/test/behat/run
 
       - run:
           # Uncomment line 13 in .ci/test/behat/cleanup to restore a backup
           # after running Behat tests. This is useful to reset the multidev
           # environment to the previous state after Behat tests have run.
           name: clean up after Behat
-          command: ./.ci/test/behat/cleanup
+          command: bash ./.ci/test/behat/cleanup
           when: always
 
       - save_cache:
@@ -208,7 +208,7 @@ jobs:
 
       - run:
           name: visual regression test
-          command: ./.ci/test/visual-regression/run
+          command: bash ./.ci/test/visual-regression/run
 
       - store_artifacts:
           path: /tmp/artifacts
