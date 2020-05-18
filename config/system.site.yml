@@ -1,0 +1,14 @@
+uuid: 63a44c5d-c4c5-423c-9953-042d67c72f16
+name: buildtools2-testsite
+mail: github@ptmkenny.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+  default_config_hash: yTxtFqBHnEWxQswuWvkjE8mKw2t8oKuCL1q8KnfHuGE
